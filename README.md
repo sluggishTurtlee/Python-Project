@@ -24,6 +24,7 @@
 
 ## 2. 프로젝트 선정 이유
  프로그램의 복잡도보다 정확한 구현에 초점을 맞췄다. 수업을 들으며 함수를 잘 활용하는 프로젝트를 만들고 싶다는 욕심이 생겼다. 숫자야구를 구현하기 전, 간단히 스케치를 해 보며 수많은 경우의 수가 있고, 사용자의 반응에 따라 또 수많은 경우의 수를 고려해야 하기 때문에 조건문을 효과적으로 활용해야 한다는 점이 흥미롭게 느껴졌다. 
+ 이에, 
 
 ## 3. 게임규칙
 - 사용되는 숫자는 0에서 9까지 **서로 다른** 숫자이다.
@@ -31,7 +32,54 @@
 - **스트라이크**: 숫자와 위치가 전부 맞을 때
 - **아웃**: 숫자와 위치가 전부 틀렸을 때
 
-##
+## 4. 핵심코드
+```python
+# 게임을 실행하는 함수
+def Game():
+    answerNum = getThreeNumbers()  # 세 자리의 서로 다른 숫자로 이루어진 정답을 생성
+    guessesTaken = 0               # 사용자가 시도한 추측 횟수를 저장하는 변수
+    outTotal = 0                   # 사용자가 '아웃'된 횟수를 저장하는 변수
+    
+    # 게임시작 메시지
+    print("Baseball game starts!")  
+
+    # 게임이 종료될 때까지 반복하기 위한 무한루프
+    while True:                         
+        print("Input 3-digit numbers")  
+        guessesTaken += 1                           # 추측 횟수 1 증가
+        
+        inputNum = getNumbersFromUser()             # 사용자가 입력한 세 자리 숫자 저장
+        result = checkNumber(inputNum, answerNum)   # 입력한 숫자와 정답을 비교하여 결과(볼/스트라이크/아웃) 저장
+        
+        # 결과가 아웃일 경우(result[2]가 1일 경우)
+        if result[2] == 1:  
+            print("Out!")  
+            outTotal += 1       # 아웃 횟수를 1 증가시킵니다.
+            if outTotal == 3:   # 아웃 횟수가 3번일 경우
+                print("You Lose! The number is", answerNum[0], answerNum[1], answerNum[2])
+                                # 패배 메시지를 출력하고 정답을 공개
+                break           # 게임 종료
+        
+        # 결과가 아웃이 아닐 경우
+        else:  
+            output = ""         # 출력할 문자열 초기화
+            if result[0] > 0:   # 스트라이크 수가 0보다 클 경우
+                output += str(result[0]) + "S"  # 스트라이크 수를 문자열에 추가합니다.
+            if result[1] > 0:  # 볼 수가 0보다 클 경우
+                output += str(result[1]) + "B"  # 볼 수를 문자열에 추가합니다.
+            print(output)  # 스트라이크와 볼의 수를 출력합니다.
+            
+            if result[0] == 3:  # 스트라이크 수가 3일 경우 (정답을 맞춘 경우)
+                print("You win")  # 승리 메시지를 출력합니다.
+                break           # 게임 종료
+
+        # 사용자가 추측한 횟수가 5번일 경우    
+        if guessesTaken == 5:  
+            print("You Lose! The number is", answerNum[0], answerNum[1], answerNum[2])
+                                # 패배 메시지를 출력하고 정답을 공개합니다.
+            break               # 게임 종료
+```
+
 ##
 ##
 ##
