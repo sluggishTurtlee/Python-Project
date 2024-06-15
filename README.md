@@ -9,7 +9,7 @@
 
 [ 4. 소개](#4-소개) 
 
-[ 5. 핵심코드](#5-프로젝트-선정-이유) 
+[ 5. 핵심코드](#5-핵심코드) 
 
 [ 6. 구현결과](#6-구현결과) 
 
@@ -54,7 +54,7 @@ def Game():
         # 결과가 아웃일 경우(result[2]가 1일 경우)
         if result[2] == 1:  
             print("Out!")  
-            outTotal += 1       # 아웃 횟수를 1 증가시킵니다.
+            outTotal += 1       # 아웃 횟수를 1 증가
             if outTotal == 3:   # 아웃 횟수가 3번일 경우
                 print("You Lose! The number is", answerNum[0], answerNum[1], answerNum[2])
                                 # 패배 메시지를 출력하고 정답을 공개
@@ -64,14 +64,14 @@ def Game():
         else:  
             output = ""         # 출력할 문자열 초기화
             if result[0] > 0:   # 스트라이크 수가 0보다 클 경우
-                output += str(result[0]) + "S"  # 스트라이크 수를 문자열에 추가합니다.
+                output += str(result[0]) + "S"  # 스트라이크 수를 문자열에 추가
             if result[1] > 0:  # 볼 수가 0보다 클 경우
-                output += str(result[1]) + "B"  # 볼 수를 문자열에 추가합니다.
-            print(output)  # 스트라이크와 볼의 수를 출력합니다.
+                output += str(result[1]) + "B"  # 볼 수를 문자열에 추가
+            print(output)      # 스트라이크와 볼의 수를 출력
             
-            if result[0] == 3:  # 스트라이크 수가 3일 경우 (정답을 맞춘 경우)
+            if result[0] == 3:    # 스트라이크 수가 3일 경우 (정답을 맞춘 경우)
                 print("You win")  # 승리 메시지를 출력합니다.
-                break           # 게임 종료
+                break             # 게임 종료
 
         # 사용자가 추측한 횟수가 5번일 경우    
         if guessesTaken == 5:  
