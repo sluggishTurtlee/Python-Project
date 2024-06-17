@@ -57,6 +57,10 @@
 
 - - -
 ## 5. 핵심코드
+<details>
+<summary>토글 접기/펼치기</summary>
+<div markdown="1">
+
 ```python
 # 게임을 실행하는 함수
 def Game():
@@ -107,6 +111,10 @@ def Game():
             break               # 게임 종료
 
 ```
+
+</div>
+</details>
+
 - - -
 ## 6. 구현결과
 
