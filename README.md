@@ -177,15 +177,19 @@ def Game():
 - - -
 ## 5. 구현결과
 - 사용자 승리
+
 ![629](https://github.com/sluggishTurtlee/Python-Project/assets/164842777/23d8dee4-1644-4702-aa6a-a09097bbc486)
 
 - 사용자 패배(5번의 기회 소진)
+  
 ![패배](https://github.com/sluggishTurtlee/Python-Project/assets/164842777/56cc56fe-d18b-4cdb-821b-1a9bd8010f32)
 
 - 사용자 패배(3 OUT)
+  
 ![쓰리아웃 패배](https://github.com/sluggishTurtlee/Python-Project/assets/164842777/4598a269-e54e-49cf-a249-5981979281d8)
 
 - 잘못된 입력
+  
 ![잘못된입력](https://github.com/sluggishTurtlee/Python-Project/assets/164842777/125ef208-8084-43d9-8f00-0b7de84353e4)
 
 
