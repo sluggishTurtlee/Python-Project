@@ -39,26 +39,87 @@
 
 
 ## 4. 함수목록
-- getThreeNumbers(): 세 개의 서로 다른 1-9 범위의 숫자를 생성하는 함수   
-  생성되는 숫자들은 순서를 고려한다.  
-  while문을 이용하여 랜덤으로 생성되는 숫자들을 모두 다르게 만든다.
-
-
-- getNumbersFromUser(): 사용자로부터 3자리 숫자를 입력받는 함수   
-  잘못된 입력일 경우 재입력을 요구하는 코드가 필요하다. 
-
-
-- checkNumber(input, output): 입력된 숫자와 정답 숫자를 비교하여 스트라이크, 볼, 아웃의 수를 반환하는 함수   
-  리스트의 인덱스를 비교하여 조건에 맞는 결과를 출력한다.
-
-
-- Game(): 게임을 실행하는 함수   
-  위의 세 가지의 함수를 적절히 활용하여 구현한다. 구체적인 주석은 다음 장에 첨부하였다.
-
-- - -
-## 5. 핵심코드
 <details>
-<summary>토글 접기/펼치기</summary>
+<summary>getThreeNumbers(): 세 개의 서로 다른 1-9 범위의 숫자를 생성하는 함수</summary>
+<div markdown="1">
+
+```python
+# 생성되는 숫자들은 순서를 고려한다.  
+# while문을 이용하여 랜덤으로 생성되는 숫자들을 모두 다르게 만든다.
+def getThreeNumbers():
+    numbers = []
+    
+    # 첫 번째 숫자 생성
+    num1 = random.randint(1, 9)
+    
+    # 두 번째 숫자 생성, 첫 번째 숫자와 다른 숫자여야 함
+    num2 = random.randint(1, 9)
+    while num2 == num1:
+        num2 = random.randint(1, 9)
+        
+    numbers.append(num1)
+    numbers.append(num2)
+    
+    # 세 번째 숫자 생성, 첫 번째 및 두 번째 숫자와 다른 숫자여야 함
+    num3 = random.randint(1, 9)
+    while num3 == num2 or num3 == num1:
+        num3 = random.randint(1, 9)
+    numbers.append(num3)
+    
+    return numbers
+```
+
+</div>
+</details>
+
+
+<details>
+<summary>getNumbersFromUser(): 사용자로부터 3자리 숫자를 입력받는 함수 </summary>
+<div markdown="1">
+
+```python
+#잘못된 입력일 경우 재입력을 요구하는 코드가 필요하다. 
+def getNumbersFromUser():
+    while True:
+        n = input()
+        # 입력이 3자리 숫자가 아니거나, 각 숫자가 서로 다르지 않은 경우
+        if len(n) != 3 or not n.isdigit() or n[0] == n[1] or n[0] == n[2] or n[1] == n[2]:
+            print(n, "is an invalid input. Try again.\n")
+        else:
+            return [int(i) for i in n]
+```
+
+</div>
+</details>
+
+<details>
+<summary>checkNumber(input, output): 입력된 숫자와 정답 숫자를 비교하여 스트라이크, 볼, 아웃의 수를 반환하는 함수 </summary>
+<div markdown="1">
+
+```python
+# 리스트의 인덱스를 비교하여 조건에 맞는 결과를 출력한다.
+def checkNumber(input, output):
+    strike = 0
+    ball = 0
+    out = 0
+    
+    for i in range(3):
+        if input[i] == output[i]:
+            strike += 1
+        elif input[i] in output:
+            ball += 1
+            
+    if strike == 0 and ball == 0:
+        out += 1
+    
+    return strike, ball, out
+```
+
+</div>
+</details>
+
+<details>
+<summary>Game(): 게임을 실행하는 함수</summary>
 <div markdown="1">
 
 ```python
