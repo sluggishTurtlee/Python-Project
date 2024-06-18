@@ -48,6 +48,8 @@
 
 
 ## 4. 함수목록
+
+화살표를 눌러 토글을 열기.
 <details>
 <summary>getThreeNumbers(): 세 개의 서로 다른 1-9 범위의 숫자를 생성하는 함수</summary>
 <div markdown="1">
